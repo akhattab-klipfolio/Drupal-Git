@@ -1,0 +1,4 @@
+name = Klipfolio
+description = A module to hold blocks for Klipfolio.
+core = 7.x
+files[] = klipfolio.module

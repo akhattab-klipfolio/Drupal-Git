@@ -1,0 +1,43 @@
+name = Klipfolio Theme (bootstrap sub-theme)
+description = Testing the bootstrap theme.
+core = 7.x
+base theme = bootstrap
+
+; Regions
+regions[navigation]     = 'Navigation'
+regions[banner]         = 'Banner'
+regions[header]         = 'Top Bar'
+regions[highlighted]    = 'Highlighted'
+regions[help]           = 'Help'
+regions[content]        = 'Content'
+regions[below_content]  = 'Below Content'
+regions[sidebar_first]  = 'Primary'
+regions[sidebar_second] = 'Secondary'
+regions[footer]         = 'Footer'
+
+; Stylesheets
+stylesheets[all][] = js/magnific-popup/magnific-popup.css
+stylesheets[all][] = css/home.less
+stylesheets[all][] = css/style.less
+stylesheets[all][] = css/util.less
+stylesheets[all][] = css/forms.less
+stylesheets[all][] = css/layout.less
+stylesheets[all][] = css/blog.less
+stylesheets[all][] = css/animation.less
+stylesheets[all][] = css/landing-pages.less
+
+
+; Scripts
+scripts[] = 'js/magnific-popup/jquery.magnific-popup.min.js'
+scripts[] = 'js/jquery-scrolltofixed/jquery-scrolltofixed-min.js'
+scripts[] = 'js/jquery.throttle.js'
+scripts[] = 'js/jquery-cookie/jquery-cookie.js'
+scripts[] = 'js/klipfolio.js'
+scripts[] = 'js/trial.js'
+
+
+; Settings inherited by base theme, uncomment to override.
+settings[toggle_name] = 0
+settings[toggle_search] = 1
+settings[cdn_bootstrap] = 1
+settings[cdn_bootstrap_version] = 3.0.0

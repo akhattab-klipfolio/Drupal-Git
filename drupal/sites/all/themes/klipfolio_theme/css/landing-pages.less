@@ -1,0 +1,332 @@
+@import "util.less";
+.node-type-landing-page {
+    .clearfix:after {
+      content: no-open-quote;
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+}
+// http://www.klipfolio.com/landing/why-marketers-need-dashboards
+.lp-why-marketers-need-dashboards {
+    .lp-banner {
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+        background-image: url(http://klipfolio.com/sites/default/files/lp/webinar-lp-banner.jpg#overlay-context=landing/why-marketers-need-dashboards);
+        background-position: 50%;
+        background-size: cover;
+        @media @xs {
+            height: 150px;
+        }
+    }
+    h2 {
+        font-weight: bold;
+    }
+    h2.section-title {
+        text-align: center;
+        margin-top: 0;
+        color: #333;
+        @media @lg {
+          text-align: left;  
+        }
+    }
+
+    img.dashboard {
+        margin: auto;
+        width: 210px;
+        @media @lg {
+            margin: 75px 50px 0px 0px;
+        }
+    }
+
+    img.webinar-presenters {
+        margin: 15px auto; 
+        height: 125px;
+        width: 125px;
+        border-radius: 50%;
+        border: 3px solid #ccc;
+        @media @xs {
+           height: 80px;
+           width: 80px; 
+        }
+    }
+}
+
+/*----------------------------------LANDING PAGES----------------------------------*/
+.node-landing-page {
+    //typography
+    .page-header {
+        color: @red;
+        font-weight: bold;
+        margin: 0 0 20px 0;
+        border: 0;
+    }
+    .page-sub-header {
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+    .section-header {
+        color: @red;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-top: 0px;
+        margin-bottom: 5px;
+        &.no-sub {
+            margin-top: 0px;
+            margin-bottom: 25px;
+        }
+    }
+    .section-sub-header {
+        color: @color-quiet;
+        margin-top: 0px;
+        margin-bottom: 40px;
+    }
+    .column-header {
+        font-weight: bold;
+        margin-top: 25px;
+        margin-bottom: 5px;
+    }
+
+    //image treatment
+    .column-image {
+        margin: 0 auto;
+    }
+
+    .circle-frame {
+        width: 175px;
+        border-radius: 50%;
+        border: 3px solid #ccc;
+    }
+    .image-frame-circle {
+        width: 175px;
+        border-radius: 50%;
+        border: 3px solid #ccc;
+    }
+
+    .social-section {
+        display: block;
+        position: relative;
+        color: #666;
+        border-bottom: 1px solid #666;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+        p {
+            float: left;
+            display: block;
+            position: relative;
+            font-weight: bold;
+            padding-top: 25px;
+        }
+        a img {
+            display: inline-block;
+            width: 30px;
+            margin-left: 5px;
+            padding-top: 25px;
+        }
+    }
+
+    //pages with form on the side (forrester)
+    .form-on-side {
+        .hero-section {
+            color: #fff; 
+            background-color: #404040;
+            overflow-y: hidden;
+            position: relative;
+            .black-gradient {
+                display: block;
+                background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0, 0, 0, 0.7) 100%);
+                background: linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0, 0, 0, 0.7) 100%);
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                @media @xs {
+                    display: none;
+                }
+                @media @sm {
+                    display: none;
+                }
+                @media @md {
+                    display: block;  
+                }
+            }
+            .black-overlay-body {
+                position: absolute;
+                height: 850px;
+                width: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                left: 0;
+                top: 0;
+                z-index: 1;
+                @media @xs {
+                    display: none;
+                }
+                @media @sm {
+                    display: none;
+                }
+                @media @md {
+                  display: block;  
+                }
+            }
+            .black-overlay-form {
+                position: absolute;
+                height: 850px;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.65);
+                left: 0;
+                top: 0;
+                z-index: 1;
+                @media @xs {
+                    display: none;
+                }
+                @media @sm {
+                    background-color: rgba(0, 0, 0, 0.65);
+                }
+                @media @md {
+                    background-color: rgba(0, 0, 0, 0.65);
+                }
+            }
+            .lets-connect {
+                display: block;
+                position: relative;
+            }
+            p {
+                display: inline-block;
+                position: relative;
+                margin-right: 5px;
+                color: #fff;
+            }
+            a img {
+                display: inline-block;
+                width: 35px;
+                margin: 0 2px;
+                padding: 3px;
+                border-radius: 50%;
+                border: 1px solid #eee;
+            }  
+        }      
+    }
+
+    //forrester - social media - banner
+    .forrester-social-media-hero {
+        color: #fff; 
+        background-color: #404040;
+        background-image: url(http://klipfolio.com/sites/default/files/lp/lp-banner2_1.jpg); 
+        background-size: cover; 
+        overflow-y: hidden;
+        position: relative;
+        @media @xs {
+            background-image: none;
+        }
+        @media @sm {
+            background-image: none;
+        }
+        @media @md {
+            background-image: url(http://klipfolio.com/sites/default/files/lp/lp-banner2_1.jpg); 
+            text-align: left;
+        }
+        img {
+            @media @xs {
+                margin: 20px auto;
+            }
+            @media @sm {
+                margin: 20px auto;
+            }
+            @media @md {
+                margin: 0;
+            }
+          
+        }  
+    }
+
+    //forrester - mobile mind shift - banner
+    .forrester-mobile-hero {
+        color: #fff; 
+        background-image: url(http://klipfolio.com/sites/default/files/lp/lp-banner2_1.jpg); 
+        background-size: cover; 
+        overflow-y: hidden;
+    }
+
+     .forrester-marketing-game, .report-background-1 {
+        color: #fff; 
+        background-image: url(http://klipfolio.com/sites/default/files/lp/office-background.jpg); 
+        background-size: cover; 
+        background-position: 0;
+        overflow-y: hidden;
+    }
+
+    .business-intelligence-dashboards, .report-background-2 {
+        color: #fff; 
+        background-image: url(http://klipfolio.com/sites/default/files/lp/lp-banner2_1.jpg); 
+        background-size: cover; 
+        overflow-y: hidden;
+    }
+    .report-background-3 {
+        color: #fff; 
+        background-image: url(http://klipfolio.com/sites/all/themes/klipfolio_theme/img/banners/report-background-3.jpg); 
+        background-size: cover; 
+        background-position: 0;
+        overflow-y: hidden;
+    }
+
+
+    // data champion 
+    .lp-data-champion {
+        .lp-intro {
+            background-image: url(http://www.klipfolio.com/images/content/landing/slide0-bg.jpg);
+            background-size: cover;
+            background-position: 50% 50%;
+            padding: 25px 0;
+            height: auto;
+            width: 100%;
+            position: relative;
+            @media @sm {
+                height: 100vh;
+                height:  ~"calc(100vh - 53px)";
+            }
+            @media @md {
+                height: 100vh;
+                height:  ~"calc(100vh - 53px)";
+            }
+            @media @lg {
+                height: 100vh;
+                height:  ~"calc(100vh - 72px)";
+            }
+            .form-container {
+                // position: relative;
+                background: rgba(255, 255, 255, 0.95); 
+                border-radius: 10px; 
+                border: 1px solid #ccc;
+                padding: 20px 0;
+                margin: 10px auto;
+                @media @xs {
+                    width: 100%;
+                }
+                @media @sm {
+                    width: 80%;
+                }
+                @media @md {
+                    max-width: 580px;
+                }
+            }
+        }        
+    }
+
+    .lp-dashboards-for-analysts {
+        .data-champion-dashboard-background {
+          background-image: url(http://www.klipfolio.com/sites/all/themes/klipfolio_theme/img/klip-gallery/klip-gallery-video-poster.jpg);
+          background-size: cover;
+          background-position: 50%;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          z-index: 0;
+          opacity: 0.35;
+          background-color: #333;
+        }
+    }
+}
+

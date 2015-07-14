@@ -1,0 +1,1014 @@
+@import "util.less";
+
+// Home page styles
+.page-node-2 {
+  // TRANSPARENT NAV
+  #navbar.sticky-nav {
+    width: 100%!important;
+    box-sizing: border-box;
+    @media @xs {
+      .navbar-inner {
+        background-color: #fff;
+      }
+    }
+    @media @sm {
+      .navbar-inner {
+        background-color: #fff;
+      }
+    }
+    @media @lg {
+      border-bottom: 0;
+      border-radius: 0;
+      .nav-bg {
+        top: 0px;
+        border-bottom: 0;
+        background: transparent;
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -ms-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+      }
+      .white-logo {
+        background-image: url(../img/klipfolio-logo-white.png) !important;
+      }
+      .navbar-inner {
+        background: transparent;
+      }
+      //Navigation links style
+      .nav > li > a.trial-link {
+        padding: 10px 30px !important;
+        margin-top: 0;
+        &:hover, &:focus {
+          background-color: #4683db;
+        }
+      }
+      .nav > li > a {
+        float: none;
+        padding: 10px 15px 10px;
+        color: #fff;
+        text-decoration: none;
+        letter-spacing: 1.5px;
+        text-shadow: none !important;
+        font-weight:bold;
+        .caret {
+          border-top-color: #fff;
+          border-bottom-color: #fff;
+        }
+        &:hover, &:focus {
+          background-color:transparent;
+          box-shadow:none;
+          color:#fff;
+          .caret {
+            border-top-color: #fff;
+            border-bottom-color: #fff;
+          }
+        }
+      }
+      //Navigation links hover effects
+      nav[role=navigation] .nav > li > a::after {
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: transparent;
+        content: '';
+        -webkit-transition: background,bottom 0.2s ease-in-out;
+        -moz-transition: background,bottom 0.2s ease-in-out;
+        -ms-transition: background,bottom 0.2s ease-in-out;
+        transition: background,bottom 0.2s ease-in-out;
+      }
+      nav[role=navigation] .nav > li > a:hover::after {
+        background: #ffffff;
+        bottom: 0px;
+      }
+      .nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
+        background: #ffffff;
+        color: #777;
+      }
+      .dropdown-menu {
+        border: 0;
+      }
+      ul.dropdown-menu.nav {
+        li > a {
+          background: #ffffff;
+          color: #777777;
+        }
+      }
+    }
+  }
+  // Primary nav
+  #navbar {
+    @media @lg {
+      border-bottom: 0;
+    }
+    .nav-bg {
+      display:  none;
+      @media @lg {
+        display:  block;
+        width: 100%;
+        height: 70px;
+        background: #fff;
+        border-bottom: solid 1px #d3d3d3;
+        position: absolute;
+        top: 0px;
+        z-index: -1;
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -ms-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+      }
+    }
+  }
+  .navbar {
+    margin-bottom:0;
+    min-height:inherit;
+    border:none;
+    box-sizing: border-box;
+    .container { }
+    .logo {
+      background-image: url(/sites/all/themes/klipfolio_theme/img/klipfolio-logo.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      width:135px;
+      height:27px;
+      margin-top:8px;
+      margin-left:0;
+      @media @md { margin-right: 20px }
+      @media @lg { height:32px; margin-top:4px; }
+    }
+    .nav > .active > a, .nav > .active > a:hover, .nav > .active > a:focus, .nav > li > a.active-trail {
+      background-color:transparent;
+      box-shadow:none;
+      color:#000000;
+      font-weight:bold;
+    }
+    .navbar-inner {
+      padding-top:6px;
+      padding-bottom:6px;
+      background-color: transparent;
+      background-image: none;
+      border:none;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
+      perspective: 1800px;
+      box-sizing: border-box;
+       @media @xs {
+        background-color: #fff;
+      }
+       @media @sm {
+        background-color: #fff;
+      }
+      @media @lg {
+        padding:15px 0;
+        background-color:transparent;
+      }
+    }
+  }
+  //////////////////////////////////////////////////
+  .region-content {
+    margin-top: -70px;
+  }
+  .section-title {
+    padding-bottom: 50px;
+    margin: 0;
+    color: #e14d57;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  //Banner
+  #home-banner {
+    background-image: url(/sites/all/themes/klipfolio_theme/img/homepage-banner.jpg);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 10px solid #e14d57;
+    @media @xs {
+      background-image: url(/sites/all/themes/klipfolio_theme/img/home-banner-mobile.jpg);
+      height: 500px;
+      background-position: 50%;
+      margin-top: 0px;
+    }
+    @media @sm {
+      height:520px;
+      background-position: 30% 50%;
+      margin-top: 70px;
+    }
+    @media @md {
+      height:650px;
+      background-position: 28% 50%;
+    }
+    @media @lg {
+      height:100vh;
+      margin-top: 0px;
+    }
+    .banner-content {
+      @media @xs {
+        margin-top: 270px;
+        text-align: center;
+      }
+      @media @sm {
+        margin-top: 280px;
+        text-align: left;
+      }
+      @media @md {
+        margin-top: 380px;
+      }
+      @media @lg {
+        margin-top: 400px;
+      }
+    }
+    .banner-text {
+      text-align: left;
+      top: 0;
+      margin-bottom: 50px;
+      @media @xs {
+        text-align: center;
+      }
+      @media @sm {
+        text-align: left;
+      }
+      h1 {
+        text-transform: uppercase;
+        margin: 0;
+        @media @xs {
+          font-size: 16px;
+          line-height: normal;
+        }
+        @media @sm {
+          font-size: 24px;
+        }
+        @media @md {
+          font-size: 25px;
+        }
+        @media @lg {
+          font-size: 42px;
+        }
+      }
+      h2 {
+        line-height: 1.4;
+        margin: 0;
+        @media @xs {
+          font-size: 15px;
+        }
+        @media @sm {
+          width: 550px;
+          font-size: 18px;
+        }
+        @media @md {
+          width: 700px;
+          font-size: 21px;
+        }
+        @media @lg {
+          width: 750px;
+          font-size: 24px;
+        }
+      }
+      .price {
+        background-color: @red;
+        padding: 2px 5px 5px;
+        font-weight: bold;
+        border-radius: 5px;
+        @media @xs {
+          background-color: transparent;
+          padding: 0;
+        }
+        a {
+          color: #fff;
+        }
+        a:hover {
+          text-decoration: none;
+        }
+      }
+    }
+    .cta-block {
+      button {
+        width: auto;
+        font-size: 16px;
+        padding: 10px 30px;
+        margin-right: 15px;
+        display: inline-block;
+        @media @lg {
+          font-size: 24px;
+          padding: 15px 30px;
+        }
+      }
+      button.btn-demo-video, button.btn-explainer-video {
+        position: relative;
+        padding-left: 60px;
+        padding-right: 25px;
+        display: none;
+        border: 2px solid #FFF;
+        background-color: rgba(0, 0, 0, 0);
+        &:before {
+          background-image: url(/sites/all/themes/klipfolio_theme/img/icons/icon-play.png);
+          background-position: 50%;
+          background-size: 100%;
+          background-repeat: no-repeat;
+          width: 25px;
+          height: 30px;
+          position: absolute;
+          content: " ";
+          left: 20px;
+          @media @md {
+            top: 7px;
+          }
+          @media @lg {
+            top: 14px;
+          }
+        }
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.3);
+        }
+        @media @md {
+          display: inline-block;
+        }
+      }
+      button.btn-request-demo {
+        position: relative;
+        padding-left: 60px;
+        padding-right: 25px;
+        display: none;
+        border: 2px solid #FFF;
+        background-color: rgba(0, 0, 0, 0);
+        &:before {
+          background-image: url(/sites/all/themes/klipfolio_theme/img/icons/icon-request-demo.png);
+          background-position: 50%;
+          background-size: 100%;
+          background-repeat: no-repeat;
+          width: 30px;
+          height: 30px;
+          position: absolute;
+          content: " ";
+          left: 20px;
+          @media @md {
+            top: 7px;
+          }
+          @media @lg {
+            top: 14px;
+          }
+        }
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.3);
+        }
+        @media @md {
+          display: inline-block;
+        }
+      }
+    }
+  }
+  // Qoutes - Top
+  #home-top-qoutes {
+    text-align: center;
+    .customer-heart {
+      display:inline-block;
+      background-image: url(/sites/all/themes/klipfolio_theme/img/red-heart.png);
+      background-size: 100% 100%;
+      width: 23px;
+      height: 22px;
+      margin: 0 10px;
+    }
+    .col-md-4:nth-child(3){
+      @media @xs {
+        border-bottom: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        margin: 40px 0;
+        padding-top: 40px;
+        padding-bottom: 40px;
+      }
+
+      @media @sm {
+        border-bottom: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        margin: 40px 0;
+        padding-top: 40px;
+        padding-bottom: 40px;
+      }
+      @media @md {
+        border: 0;
+        margin: 0;
+        padding: 0;
+      }
+    }
+    .headshot {
+      img {
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        width: 120px; height: auto;
+      }
+    }
+    .quote-body {
+      text-align: left;
+      padding: 10px;
+      @media @sm {
+        text-align: center;
+      }
+      @media @md {
+        text-align: left;
+      }
+    }
+    .qoute-divider {
+      height: 3px;
+      width: 30px;
+      background: #404040;
+      margin: 20px 10px;
+      @media @sm {
+        margin: 20px auto;
+      }
+      @media @md {
+        margin: 20px 10px;
+      }
+    }
+    .qoute-author {
+      text-align: left;
+      padding: 10px 10px 0;
+      @media @sm {
+        text-align: center;
+      }
+      @media @md {
+        text-align: left;
+      }
+      p {
+        display: block;
+        text-transform: uppercase;
+        line-height: 1.2em;
+        margin-bottom: 0;
+      }
+    }
+  }
+  //How Klipfolio Works
+  #step-container {
+    background: #f2f2f2;
+    border-top: 1px solid #EBEBEB;
+    margin: 0;
+    color:#000000;
+    text-align:center;
+    .step-diagram {
+      background-repeat:no-repeat;
+      background-position:center;
+      background-size:contain;
+      height:158px;
+    }
+    #step-connect .step-diagram { background-image: url(/sites/all/themes/klipfolio_theme/img/diagram-connect.png); }
+    #step-mashup .step-diagram  { background-image: url(/sites/all/themes/klipfolio_theme/img/diagram-mashup.png); }
+    #step-assemble .step-diagram { background-image: url(/sites/all/themes/klipfolio_theme/img/diagram-assemble.png); }
+    #step-groups .step-diagram  { background-image: url(/sites/all/themes/klipfolio_theme/img/diagram-groups.png); }
+  }
+  //ROLES SECTION
+  .roles:before, .roles:after {
+    display: table;
+    content: " ";
+  }
+  .roles:after,{
+    clear: both;
+  }
+  .roles {
+    position: relative;
+    background-color: #404040;
+    border-bottom: 5px solid @red;
+    h1 {
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+    .klipfolio-for-you {
+      display: block;
+      background-color: #404040;
+      background-image: url(/sites/all/themes/klipfolio_theme/img/klipfolio-for-you.png);
+      background-size: 90%;
+      background-position: 50%;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+      position: absolute;
+      z-index: 40;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      @media @xs {
+        height: 125px;
+        background-size: 45%;
+        position: relative;
+        border-radius: 0%;
+      }
+      @media @sm {
+        height: 125px;
+        background-size: 30%;
+        position: relative;
+        border-radius: 0%;
+      }
+      @media @md {
+        height: 125px;
+        background-size: 200px;
+        position: relative;
+        border-radius: 0%;
+      }
+      @media @lg {
+        height: 270px;
+        width: 270px;
+        background-size: 90%;
+        border-radius: 50%;
+        position: absolute;
+      }
+    }
+
+    .marketing-quarter, .executive-quarter, .analysts-quarter, .sales-quarter {
+      background-color: #404040;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      -webkit-transition: all 0.2s linear;
+      transition: all 0.2s linear;
+      @media @xs {
+        border: 1px solid #000;
+        border-right: 0px;
+        border-left: 0px;
+        height: auto;
+        padding-top: 20px;
+        padding-bottom: 0px;
+      }
+      @media @sm {
+        border: 1px solid #000;
+        border-right: 0px;
+        border-left: 0px;
+        height: auto;
+        padding: 70px 0;
+      }
+      @media @md {
+        border: 1px solid #000;
+        border-right: 0px;
+        border-left: 0px;
+        height: auto;
+        padding: 70px 0;
+      }
+      @media @lg {
+        height: 400px;
+        padding: 0;
+        border: 0;
+      }
+      .role-title {
+        position: relative;
+        height: 100%;
+        color: #fff;
+        opacity: 1;
+        z-index: 1;
+        -webkit-transition: all 0.5s linear;
+        -moz-transition: all 0.5s linear;
+        -ms-transition: all 0.5s linear;
+        transition: all 0.5s linear;
+        @media @xs {
+          height: auto;
+          text-align: center;
+        }
+        @media @sm {
+          height: auto;
+          text-align: center;
+        }
+        @media @lg {
+          height: 100%;
+          margin-top: 0;
+        }
+        h1 {
+          margin: 0;
+          margin-bottom: 15px;
+          @media @lg {
+            margin-top: 170px;
+          }
+        }
+      }
+      .role-body {
+        display: block;
+        text-align:center;
+        width: 100%;
+        height: 150px;
+        margin: auto;
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+        color: #fff;
+        z-index: 1;
+        opacity: 0;
+        -webkit-transform: translateY(-5px);
+        -moz-transform: translateY(-5px);
+        transform: translateY(-5px);
+        -webkit-transition: all 0.3s ease-in 0.3s;
+        -moz-transition: all 0.3s ease-in 0.3s;
+        -ms-transition: all 0.3s ease-in 0.3s;
+        transition: all 0.3s ease-in 0.3s;
+        @media @xs {
+          display: none;
+        }
+        @media @sm {
+          position: relative;
+          opacity: 1;
+        }
+        @media @lg {
+          position: absolute;
+          opacity: 0;
+        }
+        h4.role-text {
+          width: 500px;
+          margin: auto;
+          @media @xs {
+            width: 100%;
+            padding: 0 10px;
+          }
+        }
+        a {color: #fff; }
+        a:hover {text-decoration: none;}
+        h4.role-button {
+          background: #e14d57;
+          color: #ffffff !important;
+          text-align: center;
+          padding: 10px 30px;
+          cursor: pointer;
+          width: 250px;
+          margin: 10px auto;
+        }
+        h4.role-button:hover {
+          background: #d14d57;
+        }
+      }
+    }
+    .marketing-quarter:hover, .executive-quarter:hover, .analysts-quarter:hover, .sales-quarter:hover {
+      @media @lg {
+        .role-title {
+          -webkit-transform: translateY(-300px);
+          -moz-transform: translateY(-300px);
+          transform: translateY(-300px);
+        }
+        .role-body {
+          opacity: 1;
+          -webkit-transform: translateY(0px);
+          -moz-transform: translateY(0px);
+          transform: translateY(0px);
+        }
+      }
+    }
+
+    .marketing-quarter::after {
+      content: "";
+      background-image: url(/sites/all/themes/klipfolio_theme/img/marketing-quarter-bg.jpg);
+      background-position: 50%;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 0;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      @media @xs {
+        opacity:  0.4;
+        filter: alpha(opacity=40);
+        -webkit-filter: blur(0.5px);
+        -moz-filter: blur(0.5px);
+        -o-filter: blur(0.5px);
+        -ms-filter: blur(0.5px);
+        filter: blur(0.5px);
+      }
+      @media @sm {
+        opacity:  0.6;
+        filter: alpha(opacity=60);
+        -webkit-filter: blur(1.5px);
+        -moz-filter: blur(1.5px);
+        -o-filter: blur(1.5px);
+        -ms-filter: blur(1.5px);
+        filter: blur(1.5px);
+      }
+      @media @lg {
+        opacity:  0.9;
+        filter: alpha(opacity=90);
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -o-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+      }
+    }
+    .executive-quarter::after {
+      content: "";
+      background-image: url(/sites/all/themes/klipfolio_theme/img/executive-quarter-bg.jpg);
+      background-position: 50%;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 0;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      @media @xs {
+        opacity:  0.4;
+        filter: alpha(opacity=40);
+        -webkit-filter: blur(0.5px);
+        -moz-filter: blur(0.5px);
+        -o-filter: blur(0.5px);
+        -ms-filter: blur(0.5px);
+        filter: blur(0.5px);
+      }
+      @media @sm {
+        opacity:  0.6;
+        filter: alpha(opacity=60);
+        -webkit-filter: blur(1.5px);
+        -moz-filter: blur(1.5px);
+        -o-filter: blur(1.5px);
+        -ms-filter: blur(1.5px);
+        filter: blur(1.5px);
+      }
+      @media @lg {
+        opacity:  0.9;
+        filter: alpha(opacity=90);
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -o-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+      }
+    }
+    .analysts-quarter::after {
+      content: "";
+      background-image: url(/sites/all/themes/klipfolio_theme/img/analyst-quarter-bg.jpg);
+      background-position: 50%;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 0;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      @media @xs {
+        opacity:  0.4;
+        filter: alpha(opacity=40);
+        -webkit-filter: blur(0.5px);
+        -moz-filter: blur(0.5px);
+        -o-filter: blur(0.5px);
+        -ms-filter: blur(0.5px);
+        filter: blur(0.5px);
+      }
+      @media @sm {
+        opacity:  0.6;
+        filter: alpha(opacity=60);
+        -webkit-filter: blur(1.5px);
+        -moz-filter: blur(1.5px);
+        -o-filter: blur(1.5px);
+        -ms-filter: blur(1.5px);
+        filter: blur(1.5px);
+      }
+      @media @lg {
+        opacity:  0.9;
+        filter: alpha(opacity=90);
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -o-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+      }
+    }
+    .sales-quarter::after {
+      content: "";
+      background-image: url(/sites/all/themes/klipfolio_theme/img/sales-quarter-bg.jpg);
+      background-position: 50%;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      z-index: 0;
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      @media @xs {
+        opacity:  0.4;
+        filter: alpha(opacity=40);
+        -webkit-filter: blur(0.5px);
+        -moz-filter: blur(0.5px);
+        -o-filter: blur(0.5px);
+        -ms-filter: blur(0.5px);
+        filter: blur(0.5px);
+      }
+      @media @sm {
+        opacity:  0.6;
+        filter: alpha(opacity=60);
+        -webkit-filter: blur(1.5px);
+        -moz-filter: blur(1.5px);
+        -o-filter: blur(1.5px);
+        -ms-filter: blur(1.5px);
+        filter: blur(1.5px);
+      }
+      @media @lg {
+        opacity:  0.9;
+        filter: alpha(opacity=90);
+        -webkit-filter: blur(0px);
+        -moz-filter: blur(0px);
+        -o-filter: blur(0px);
+        -ms-filter: blur(0px);
+        filter: blur(0px);
+      }
+    }
+    .marketing-quarter:hover::after, .executive-quarter:hover::after, .analysts-quarter:hover::after, .sales-quarter:hover::after {
+      @media @lg {
+        opacity:  0.3;
+      }
+    }
+  }
+
+  // Home customers
+  #customer-container {
+    text-align: center;
+    margin: 0;
+    #customer-logos {
+      @media @xs { margin-bottom: 40px; }
+      @media @sm { padding: 10px 100px 0 100px; margin-bottom:40px;}
+      @media @md { padding: 13px 22px 0 22px; }
+      @media @lg { padding: 13px 50px 0 50px; }
+    }
+    .trial-link {
+      width:80%;
+      display:block;
+      margin: 40px auto 40px auto;
+      @media @sm { width: 40%; margin-top:60px; margin-bottom:60px }
+      @media @md { width: 60% }
+      @media @lg { width: 60% }
+      h3 {
+        margin: 0;
+        @media @xs { font-size: 100% }
+        @media @sm { font-size:120% }
+      }
+    }
+    .home-bottom-quotes {
+      text-align: center;
+      .row .col-md-9 {
+        margin-bottom: 30px;
+        @media @lg {
+          border-left: 1px solid #ccc;
+        }
+      }
+      .quote-arrow {
+        @media @lg {
+          width: 15px;
+          height: 15px;
+          background: #fff;
+          border-top: 1px solid #ccc;
+          border-left: 1px solid #ccc;
+          transform: rotateZ(-45deg);
+          position: absolute;
+          left: -8px;
+          top: 46px;
+        }
+      }
+      .headshot {
+        img {
+          border-radius: 50%;
+          @media @xs {
+            margin: 25px auto;
+          }
+          @media @sm {
+            margin: 25px auto;
+          }
+          @media @md {
+            margin: 20px;
+            width: 85px;
+            height: auto;
+          }
+        }
+      }
+      .quote-body {
+        text-align: left;
+        padding: 10px;
+        @media @xs {
+          text-align: center;
+        }
+        @media @sm {
+          text-align: center;
+        }
+        @media @md {
+          text-align: left;
+        }
+      }
+      .qoute-divider {
+        height: 3px;
+        width: 30px;
+        background: #404040;
+        @media @xs {
+          margin: -10px auto 10px auto;
+        }
+        @media @sm {
+          margin: -10px auto 10px auto;
+        }
+        @media @md {
+          margin: -10px 10px 0 10px;
+        }
+      }
+      .qoute-author {
+        text-align: left;
+        padding: 10px 10px 20px;
+        @media @xs {
+          text-align: center;
+        }
+        @media @sm {
+          text-align: center;
+        }
+        @media @md {
+          text-align: left;
+        }
+        p {
+          display: block;
+          text-transform: uppercase;
+          line-height: 1.2em;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  // Bottom of page CTA
+  #learn-try {
+    background-image: url(/sites/all/themes/klipfolio_theme/img/bottom-of-page2.jpg);
+    background-position: center;
+    width: 100%;
+    padding: 50px 0;
+    color: #fff;
+    text-align: center;
+    h2 {
+      margin: 0 30px 0 0;
+      display: inline-block;
+    }
+  }
+
+  section.bottom-of-page {
+      background-color: #333333;
+      background-image: url("/sites/all/themes/klipfolio_theme/img/data-viz-icons-bg.png");
+      color: #fff;
+      text-align: center;
+      h2 {
+          font-weight: bold;
+          text-transform: uppercase;
+          margin: 0 auto 15px;
+      }
+      p {
+          margin-bottom: 0;
+      }
+      .trial-link {
+        background-color: #e14d57;
+        border-radius: 5px;
+        &:hover {
+          background-color: #b93c45;
+        }
+      }
+  }
+
+  .modal#qoute-1, .modal#qoute-2 {
+    img {
+      float: left;
+      display: inline-block;
+      margin: 0 20px 5px 0;
+      width: 150px;
+    }
+    h3.author-name {
+      margin: 0;
+      font-weight: bold;
+      line-height: 1em;
+    }
+    h4.author-position {
+      margin: 0;
+      margin-bottom: 20px;
+    }
+  }
+
+  .modal#NapkinVideo, .modal#DemoVideo {
+    .modal-dialog {
+      width: 75vw;
+    }
+  }
+
+  // Home other
+  #footer .footer-area {
+    margin-top:0;
+  }
+}

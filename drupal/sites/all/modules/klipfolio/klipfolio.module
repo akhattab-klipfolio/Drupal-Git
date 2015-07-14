@@ -1,0 +1,538 @@
+<?php
+
+require 'PHPMailer-master/class.phpmailer.php';
+require 'inc.salesforce.php';
+
+/**
+ * @file
+ * Implements various blocks for Klipfolio.
+ */
+
+
+/**
+ * Implements hook_block_info().
+ */
+function klipfolio_block_info() {
+    $blocks['changelog_sidenav'] = array(
+        'info'       => t('Changelog Side Nav'),
+        'status'     => TRUE,
+        'region'     => 'sidebar_first',
+        'weight'     => 0,
+        'visibility' => 1,
+    );
+
+    $blocks['newsletter_sidenav'] = array(
+        'info'       => t('Newsletter Side Nav'),
+        'status'     => TRUE,
+        'region'     => 'sidebar_first',
+        'weight'     => 0,
+        'visibility' => 1,
+    );
+
+    $blocks['kpi_ex_pager'] = array(
+        'info'       => t('KPI Example Pager'),
+        'status'     => TRUE,
+        'region'     => 'below_content',
+        'weight'     => 0,
+        'visibility' => 1,
+    );
+
+    $blocks['dashboard_ex_pager'] = array(
+        'info'       => t('Dashboard Example Pager'),
+        'status'     => TRUE,
+        'region'     => 'below_content',
+        'weight'     => 0,
+        'visibility' => 1,
+    );
+
+    return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function klipfolio_block_view($delta= '') {
+    switch($delta) {
+        case 'changelog_sidenav':
+            $block['content'] = changelog_sidenav_block_view();
+            break;
+        case 'newsletter_sidenav':
+            $block['content'] = newsletter_sidenav_block_view();
+            break;
+        case 'kpi_ex_pager':
+            $block['content'] = kpi_ex_pager_block_view();
+            break;
+        case 'dashboard_ex_pager':
+            $block['content'] = dashboard_ex_pager_block_view();
+            break;
+    }
+
+    return $block;
+}
+
+function klipfolio_menu (){
+    $items['email_test'] = array(
+	    'title' => 'Email has been sent successfully',
+	    'page callback' => 'email_request',
+	    'access callback' => TRUE,
+	    'page arguments' => array(0)
+    );
+
+    return $items;
+}
+
+function email_request (){
+    //process email and send
+    $emails = explode(";", $_GET['email']);
+    $from = $_GET['from'];
+    $subject = $_GET['subject'];
+    $message = $_GET['message'];
+
+    $mail = new PHPMailer;
+
+    $mail->isSMTP();                                        // Set mailer to use SMTP
+    $mail->Host = 'smtp.mailgun.org';                       // Specify main and backup server
+    $mail->Port = 587;
+    $mail->SMTPAuth = true;                                 // Enable SMTP authentication
+    $mail->Username = 'postmaster@app.klipfolio.com';       // SMTP username
+    $mail->Password = '3tt9p4rqebl8';                       // SMTP password
+    $mail->SMTPSecure = 'tls';                              // Enable encryption, 'ssl' also accepted
+
+    $mail->From = $from;
+    $mail->FromName = $from;
+
+    foreach ($emails as $email) {
+        $mail->addAddress(trim($email));
+    }
+
+    //$mail->addAddress('josh@example.net', 'Josh Adams');  // Add a recipient
+    //$mail->addAddress('ellen@example.com');               // Name is optional
+    //$mail->addReplyTo('info@example.com', 'Information');
+    //$mail->addCC('cc@example.com');
+    //$mail->addBCC('bcc@example.com');
+
+    $mail->WordWrap = 50;                                   // Set word wrap to 50 characters
+    //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+    $mail->isHTML(true);                                    // Set email format to HTML
+
+    $mail->Subject = $subject;
+    $mail->Body    = $message;
+    $mail->AltBody = $message;
+
+    if(!$mail->send()) {
+   	    //make ajax return some how ??? :$
+	    echo '{error:"' . $mail->ErrorInfo . '"}';
+   	    exit;
+    }
+
+    echo '{success:"message has been sent"}';
+    exit;
+
+    return '';
+}
+
+/**
+ * Create sidenav block for changelog page
+ *
+ * @return array
+ */
+function changelog_sidenav_block_view() {
+    $result = db_query("
+        SELECT
+            d.field_date_value AS org_date,
+            DATE_FORMAT(d.field_date_value, '%M %Y') AS month_year
+        FROM {field_data_field_date} d
+        INNER JOIN {node} n ON d.entity_id = n.nid
+        WHERE n.type = 'changelog_entry'
+        GROUP BY month_year
+        ORDER BY org_date DESC
+    ");
+
+    $items = array();
+    $dropItems = array();
+    $i = 0;
+    foreach ($result as $record) {
+        $fragment = strtolower(str_replace(" ", "-", $record->month_year));
+        $link = l(t($record->month_year), '', array('fragment' => $fragment, 'external' => TRUE));
+
+        if ($i < 12) {
+            $items[] = $link;
+        } else {
+            $dropItems[] = $link;
+        }
+
+        $i++;
+    }
+
+    return create_date_list($items, $dropItems, "changelog-sidenav");
+
+}
+
+/**
+ * Create sidenav block for newsletter page
+ *
+ * @return array
+ */
+function newsletter_sidenav_block_view() {
+    $result = db_query("
+        SELECT
+            d.field_date_value AS org_date,
+            DATE_FORMAT(d.field_date_value, '%M %Y') AS month_year
+        FROM {field_data_field_date} d
+        INNER JOIN {node} n ON d.entity_id = n.nid
+        WHERE n.type = 'newsletter'
+        GROUP BY month_year
+        ORDER BY org_date DESC
+    ");
+
+    $current_page = drupal_lookup_path("alias", current_path());
+
+    $items = array();
+    $dropItems = array();
+    $i = 0;
+    foreach ($result as $record) {
+        $monthYear = strtolower(str_replace(" ", "-", $record->month_year));
+        $path = "about/scoreboard-" . $monthYear;
+        $link = l(t($record->month_year), drupal_get_normal_path($path));
+
+        if ($path == $current_page) {
+            $link = array(
+                "anchor" => $link,
+                "active" => true
+            );
+        }
+
+        if ($i < 12) {
+            $items[] = $link;
+        } else {
+            $dropItems[] = $link;
+        }
+
+        $i++;
+    }
+
+    return create_date_list($items, $dropItems, "newsletter-sidenav");
+}
+
+/**
+ * Create HTML for list of dates
+ *
+ * @param $items
+ * @param $dropItems
+ * @param $id
+ * @return array
+ */
+function create_date_list($items, $dropItems, $id) {
+    $list = "<div id='" . $id . "'><ul class='nav nav-list dropup'>";
+
+    foreach ($items as $item) {
+        if (is_array($item) && $item['active']) {
+            $list .= "<li class='active'>" . $item['anchor'] . "</li>";
+        } else {
+            $list .= "<li>" . $item . "</li>";
+
+        }
+    }
+
+    if (count($dropItems) > 0) {
+        $dropdown = "<li class='dropdown-submenu'>";
+        $dropdown .= "<a class='dropdown-toggle' data-toggle='dropdown'>More<span class='caret'></span></a>";
+
+        $dropdown .= "<ul class='dropdown-menu nav'>";
+        foreach($dropItems as $dropItem) {
+            if (is_array($dropItem) && $dropItem['active']) {
+                $dropdown .= "<li class='active'>" . $dropItem['anchor'] . "</li>";
+            } else {
+                $dropdown .= "<li>" . $dropItem . "</li>";
+            }
+        }
+        $dropdown .= "</ul>";
+
+        $dropdown .= "</li>";
+
+        $list .= $dropdown;
+    }
+
+    $list .= "</ul></div>";
+
+    return array(
+        '#markup' => $list
+    );
+}
+
+
+/**
+ * Create custom pager for KPI examples
+ *
+ * @return array
+ */
+function kpi_ex_pager_block_view() {
+    $result = db_query("
+        SELECT
+            n.nid AS node_id,
+            n.title AS node_title,
+            t.name AS cat_name,
+            t.weight AS cat_index,
+            i.field_index_value AS ex_index
+        FROM {node} n
+        INNER JOIN {field_data_field_index} i ON n.nid = i.entity_id
+        INNER JOIN {field_data_field_example_category} ec ON n.nid = ec.entity_id
+        INNER JOIN {taxonomy_term_data} t ON ec.field_example_category_tid = t.tid
+        WHERE n.type = 'kpi_example' and n.status = 1
+        ORDER BY cat_index, ex_index, n.created DESC
+    ")->fetchAll();
+
+    return create_custom_pager($result, "random KPI example");
+}
+
+/**
+ * Create custom pager for Dashboard examples
+ *
+ * @return array
+ */
+function dashboard_ex_pager_block_view() {
+    $result = db_query("
+        SELECT
+            n.nid AS node_id,
+            n.title AS node_title,
+            t.name AS cat_name,
+            t.weight AS cat_index,
+            i.field_index_value AS ex_index
+        FROM {node} n
+        INNER JOIN {field_data_field_index} i ON n.nid = i.entity_id
+        INNER JOIN {field_data_field_example_category} ec ON n.nid = ec.entity_id
+        INNER JOIN {taxonomy_term_data} t ON ec.field_example_category_tid = t.tid
+        WHERE n.type = 'dashboard_example' and n.status = 1
+        ORDER BY cat_index, ex_index, n.created DESC
+    ")->fetchAll();
+
+    return create_custom_pager($result, "random dashboard example");
+}
+
+/**
+ * Create HTML for custom example pager
+ *
+ * @param $result
+ * @param $random_link_text
+ * @return array
+ */
+function create_custom_pager($result, $random_link_text)
+{
+    $node = menu_get_object();
+
+    $prevNode = null;
+    $nextNode = null;
+    $found = false;
+    if ($node && $node->nid) {
+        foreach ($result as $record) {
+            if ($found) {
+                $nextNode = $record->node_id;
+                break;
+            }
+
+            if ($record->node_id == $node->nid) {
+                $found = true;
+            } else {
+                $prevNode = $record->node_id;
+            }
+        }
+    }
+
+    if ($prevNode == null) $prevNode = $result[count($result) - 1]->node_id;
+    if ($nextNode == null) $nextNode = $result[0]->node_id;
+
+    $prevLink = l(t("< previous"), drupal_lookup_path("alias", "node/" . $prevNode));
+    $nextLink = l(t("next >"), drupal_lookup_path("alias", "node/" . $nextNode));
+
+    $randomNode = $result[rand(0, count($result) - 1)]->node_id;
+    $randomLink = l(t($random_link_text), drupal_lookup_path("alias", "node/" . $randomNode));
+
+    return array(
+        '#markup' =>
+            '<div class="text-center" style="margin-top:60px">
+                <ul class="pagination">
+                    <li class="prev first">' . $prevLink . '</li>
+                    <li>' . $randomLink . '</li>
+                    <li class="next last">' . $nextLink . '</li>
+                </ul>
+            </div>'
+    );
+}
+
+
+/**
+ * Implement hook_form_alter()
+ *
+ * @param $form
+ * @param $form_state
+ * @param $form_id
+ */
+function klipfolio_form_alter(&$form, &$form_state, $form_id)
+{
+    switch ($form_id) {
+        case "webform_client_form_125":     // Contact Us form
+            $form['#submit'][] = 'contact_us_submit_handler';
+            break;
+        case "webform_client_form_987":     // Partner form
+            $form['#submit'][] = 'become_partner_submit_handler';
+            break;
+        case "webform_client_form_364":     // Professional Services form
+            $form['#submit'][] = 'professional_services_submit_handler';
+            break;
+        case "webform_client_form_283":     // Newsletter form
+            $form['#submit'][] = 'newsletter_submit_handler';
+            break;
+        case "webform_client_form_752":     // Prospect form
+            $form['#submit'][] = 'prospect_submit_handler';
+            break;
+        case "webform_client_form_935":     // Webinar form
+            $form['#submit'][] = 'webinar_submit_handler';
+            break;
+    }
+}
+
+function contact_us_submit_handler(&$form, &$form_state) {
+    global $sfCustomFields;
+
+    $data['first_name'] = $_POST['submitted']['f_first_name'];
+    $data['last_name'] = $_POST['submitted']['f_last_name'];
+    $data[ $sfCustomFields['role'] ] = $_POST['submitted']['f_role'];
+    $data['email'] = $_POST['submitted']['f_email'];
+    $data['company'] = $_POST['submitted']['f_company'];
+    $data['industry'] = $_POST['submitted']['f_industry_focus'];
+    $data['URL'] = $_POST['submitted']['f_website'];
+    $data['country'] = $_POST['submitted']['f_country'];
+
+    $data['description'] = $_POST['submitted']['f_comment'];
+
+    $data['lead_source'] = "Website Contact";
+    $data[ $sfCustomFields['page_source'] ] = drupal_lookup_path("alias", current_path());
+
+    sfWeb2Lead($data);
+}
+
+function become_partner_submit_handler(&$form, &$form_state) {
+    global $sfCustomFields;
+
+    $data['first_name'] = $_POST['submitted']['f_firstname'];
+    $data['last_name'] = $_POST['submitted']['f_lastname'];
+    $data[ $sfCustomFields['role'] ] = $_POST['submitted']['f_role'];
+    $data['email'] = $_POST['submitted']['f_email'];
+    $data['company'] = $_POST['submitted']['f_company'];
+    $data['industry'] = $_POST['submitted']['f_industry'];
+    $data['URL'] = $_POST['submitted']['f_website'];
+    $data['country'] = $_POST['submitted']['f_country'];
+
+    $data[ $sfCustomFields['tech_expertise'] ] = $_POST['submitted']['f_techexpertise'];
+    $data[ $sfCustomFields['data_sources'] ] = $_POST['submitted']['f_datasources'];
+    $data[ $sfCustomFields['biz_issues'] ] = $_POST['submitted']['f_bizissues'];
+    $data['employees'] = $_POST['submitted']['f_employees'];
+    $data[ $sfCustomFields['cloud'] ] = $_POST['submitted']['f_trial'];
+    $data[ $sfCustomFields['bi_experience'] ] = $_POST['submitted']['f_biexperience'];
+    $data[ $sfCustomFields['competitors'] ] = $_POST['submitted']['f_competitors'];
+    $data['description'] = $_POST['submitted']['f_comment'];
+
+    $data['lead_source'] = "Website Contact";
+    $data[ $sfCustomFields['page_source'] ] = drupal_lookup_path("alias", current_path());
+
+    sfWeb2Lead($data);
+}
+
+function professional_services_submit_handler(&$form, &$form_state) {
+    global $sfCustomFields;
+
+    // split name..
+    list($first, $last) = explode(" ", $_POST['submitted']['f_name'], 2);
+
+    $data['first_name'] = ucwords($first);
+    $data['last_name'] = ucwords($last);
+    $data['email'] = $_POST['submitted']['f_email'];
+    $data['company'] = $_POST['submitted']['f_company'];
+    $data['phone'] = $_POST['submitted']['f_phone'];
+    $data['description'] = $_POST['submitted']['f_comment'];
+
+    $data['country'] = getCountryName();
+    $data['lead_source'] = "Website Contact";
+    $data[ $sfCustomFields['page_source'] ] = drupal_lookup_path("alias", current_path());
+
+    sfWeb2Lead($data);
+}
+
+function newsletter_submit_handler(&$form, &$form_state) {
+    global $sfCustomFields;
+
+    $data['email'] = $_POST['submitted']['f_email'];
+
+    $data['country'] = getCountryName();
+    $data['lead_source'] = "Prospect Sign Up";
+    $data[ $sfCustomFields['page_source'] ] = drupal_lookup_path("alias", current_path());
+
+    sfWeb2Lead($data);
+}
+
+function prospect_submit_handler(&$form, &$form_state) {
+    global $sfCustomFields;
+
+    $data['email'] = $_POST['submitted']['f_email'];
+
+    $data['country'] = getCountryName();
+    $data['lead_source'] = "Prospect Sign Up";
+    $data[ $sfCustomFields['page_source'] ] = drupal_lookup_path("alias", current_path());
+
+    sfWeb2Lead($data);
+}
+
+function webinar_submit_handler(&$form, &$form_state) {
+    $node = menu_get_object();
+
+    $data['firstName'] = $_POST['submitted']['f_firstname'];
+    $data['lastName'] = $_POST['submitted']['f_lastname'];
+    $data['email'] = $_POST['submitted']['f_email'];
+
+    $data_string = json_encode($data);
+
+    $field = field_get_items('node', $node, 'field_webinar_id');
+    $webinarId = $field[0]['value'];
+
+    $service_url = 'https://api.citrixonline.com/G2W/rest/organizers/100000000000276453/webinars/' . $webinarId . '/registrants';
+    $ch = curl_init($service_url);
+
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'Accept: application/json',
+        'Content-Type: application/json',
+        'Authorization: OAuth oauth_token=U637Z9EWR0o0U09a6eNSlTVP2amf'
+    ));
+
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    dpm($response);
+}
+
+function selectToString($select) {
+    $values = array();
+
+    foreach ($select['select'] as $key => $value) {
+        if ($key == "select_or_other") {
+            $values[] = $select['other'];
+        } else {
+            $values[] = $value;
+        }
+    }
+
+    return implode(", ", $values);
+}
+
+
+function getCountryName() {
+    $result = file_get_contents('http://api.hostip.info/get_json.php');
+    $callerInfo = json_decode($result);
+
+    return $callerInfo->country_name;
+}
+
+

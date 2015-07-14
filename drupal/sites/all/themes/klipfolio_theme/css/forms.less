@@ -1,0 +1,377 @@
+@import "util.less";
+// Buttons
+.large-primary {
+    background-image: url(../img/button-large-primary.png);
+    background-repeat: repeat-x;
+    border: 1px solid #be934d;
+    color: #404040;
+    font-size: 95%;
+    font-weight: bold;
+    height: 34px;
+    padding: 3px 40px;
+}
+button {
+    width: auto;
+    padding: 10px 30px;
+    color: #ffffff;
+    background-color: #4683db;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    margin: 10px auto;
+    outline: 0;
+    border: 0;
+    border-radius: 5px;
+    -webkit-transition: background-color 0.2s linear;
+    -moz-transition: background-color 0.2s linear;
+    -ms-transition: background-color 0.2s linear;
+    transition: background-color 0.2s linear;
+    &:hover, &:focus, &:active {
+        outline: 0;
+    }
+    &.red {
+        background-color: @red;
+        &:hover {
+            background-color: lighten(@red,6%);
+        }
+        &:focus, &:active {
+            background-color: darken(@red,10%);
+        }
+    }
+    &.blue {
+        background-color: @blue;
+        &:hover {
+            background-color: lighten(@blue,6%);
+        }
+        &:focus, &:active {
+            background-color: darken(@blue,10%);
+        }
+    }
+    &.green {
+        background-color: @green;
+        &:hover {
+            background-color: lighten(@green,6%);
+        }
+        &:focus, &:active {
+            background-color: darken(@green,10%);
+        }
+    }
+    &.turquoise {
+        background-color: @turquoise;
+        &:hover {
+            background-color: lighten(@turquoise,10%);
+        }
+        &:focus, &:active {
+            background-color: darken(@turquoise,10%);
+        }
+    }
+    &.orange {
+        background-color: @orange;
+        &:hover {
+            background-color: lighten(@orange,6%);
+        }
+        &:focus, &:active {
+            background-color: darken(@orange,10%);
+        }
+    }
+    // white - special-case
+    &.white {
+        background-color: @white;
+        color: @red;
+        &:hover, &:focus {
+            background-color: #ccc;
+        }
+        a.red {
+            color: @red;
+            background: transparent;
+            &:hover {
+                text-decoration: none;
+                color: @red;
+                background: transparent;
+            }
+        }
+        a.blue {
+            color: @blue;
+            background: transparent;
+            &:hover {
+                text-decoration: none;
+                color: @blue;
+                background: transparent;
+            }
+        }
+    }
+    &.btn-demo-video, &.btn-explainer-video {
+        &:before {
+          background-image: url(/sites/all/themes/klipfolio_theme/img/icons/icon-play.png);
+          background-position: 50%;
+          background-size: 100%;
+          background-repeat: no-repeat;
+          width: 25px;
+          height: 30px;
+          display: inline-block;
+          content: " ";
+          vertical-align: middle;
+          margin-right: 10px;
+        }
+    }
+    &:focus {
+        outline: 0;
+    }
+    a {
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        &:hover {
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+}
+.trial-link, .blue-link {
+    display: inline-block;
+    color: #ffffff !important;
+    background-color: #5290e9;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px 30px;
+    cursor: pointer;
+    -webkit-transition: background-color 0.2s linear;
+    -moz-transition: background-color 0.2s linear;
+    -ms-transition: background-color 0.2s linear;
+    transition: background-color 0.2s linear;
+    &:hover, &:focus {
+        background-color: #4683db;
+    }
+}
+.gray-link {
+    .trial-link;
+    background-color: @grey-medium;
+    box-shadow: none;
+    &:hover, &:focus {
+        background-color: @grey
+    }
+}
+.navbar .nav > li > a.trial-link {
+    padding: 6px 18px;
+    margin-top: 4px;
+    border-radius: 5px;
+    &:hover, &:focus {
+        background-color: #4683db;
+    }
+    @media @lg {
+        padding: 10px 30px;
+        margin-top: 0
+    }
+}
+
+.social-button {
+    display: inline-block;
+    cursor: pointer;
+    width: 80px;
+    margin: 0 4px 0 0;
+    border: solid 1px #cccccc;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: #fff;
+    .social-button-content {
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: 3px 1px;
+        padding: 2px 2px 2px 28px;
+        font-size: 80%;
+        color: #777777;
+        line-height: @content-line-height * 0.9;
+        &.twitter {
+            background-image: url(../img/button-twitter.png);
+        }
+        &.facebook {
+            background-image: url(../img/button-facebook.png);
+        }
+        &.googleplus {
+            background-image: url(../img/button-googleplus.png);
+        }
+        &.email {
+            background-image: url(../img/button-email.png);
+        }
+        &.linkedin {
+            background-image: url(../img/button-linkedin.png);
+        }
+        &.rss {
+            background-image: url(../img/button-rss.png);
+        }
+    }
+}
+.blog-social-links {
+    position: fixed;
+    width: 100px;
+    left: 5%;
+    top: 170px;
+    background: #fff;
+    padding: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+    .social-button {
+        display: block;
+        margin: 5px auto 0;
+    }
+}
+.cancel-action {
+    color: #1469A8;
+    margin-right: 14px;
+    cursor: pointer;
+    line-height: 30px;
+}
+
+// Form-specific styling
+//main trial form on website
+iframe#trial-form {
+    width: 100% !important;
+    @media @xs {
+        width: 195px !important;
+        height: 415px !important;
+    }
+}
+
+// contact us page form
+iframe#contact-us-form {
+    width: 100%;
+    border: 0;
+    @media @xs {
+        height: 900px;
+    }
+    @media @sm {
+        height: 900px;
+    }
+    @media @md {
+        height: 900px;
+    }
+    @media @lg {
+        height: 600px;
+    }
+}
+
+// partners page form
+iframe#partners-form{
+    width: 100%;
+    border: 0;
+    @media @xs {
+        height: 1460px;
+    }
+    @media @sm {
+        height: 1425px;
+    }
+    @media @md {
+        height: 825px;
+    }
+}
+
+// partners page form
+iframe#tech-partners-form{
+    width: 100%;
+    border: 0;
+    @media @xs {
+        height: 1150px;
+    }
+    @media @sm {
+        height: 1150px;
+    }
+    @media @md {
+        height: 700px;
+    }
+}
+
+// professional services page form
+iframe#ps-form {
+    width: 100%;
+    border: 0;
+    @media @xs {
+        height: 700px;
+    }
+    @media @sm {
+        height: 700px;
+    }
+    @media @md {
+        height: 455px;
+    }
+}
+
+//webinar form
+iframe#webinar {
+    width: 100%;
+    border: 0;
+    height: 360px;
+    
+}
+
+iframe#data-champion-form {
+    border: 0; height: 70px; width: 100%; padding: 0 20px;margin-top: 25px;
+    @media @xs {
+        height: 112px;
+    }
+    @media @sm {
+        height: 70px;
+    }
+    @media @md {
+        height: 70px;
+    }
+}
+
+iframe#dashboard-palooza {
+    height: 151px;
+    width: 100%;
+    border: 0;
+    margin-top: 25px;
+    @media @xs {
+        height: 450px;
+    }
+    @media @sm {
+        height: 151px;
+    }
+}
+
+// request demo form
+iframe#request-demo-form {
+    width: 100%;
+    border: 0;
+    @media @xs {
+        height: 660px;
+    }
+    @media @sm {
+        height: 660px;
+    }
+    @media @md {
+        height: 660px;
+    }
+    @media @lg {
+        height: 450px;
+    }
+}
+
+//journey guide contact form
+iframe#journey-guide-form {
+    width: 100%;
+    border: 0;
+    @media @xs {
+        height: 660px;
+    }
+    @media @sm {
+        height: 660px;
+    }
+    @media @md {
+        height: 660px;
+    }
+    @media @lg {
+        height: 550px;
+    }
+}
+
+.subscription-preference-Form {
+    iframe {
+        border: 0;
+        height: 290px;
+    }
+}
+
