@@ -10,7 +10,7 @@
     <link href="/<?php print path_to_theme() ?>/css/bootstrap.min.css" rel="stylesheet">
     <?php print $styles; ?>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-    <script src="//cdn.optimizely.com/js/739880420.js"></script>
+    
     <?php print $scripts; ?>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -24,13 +24,13 @@
       data-offset="<?php if (drupal_lookup_path("alias", current_path()) == "features") { print 140; } else { print 70; } ?>">
 
     <!-- Google Tag Manager -->
-        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PNCCDQ"
+        <!-- <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PNCCDQ"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-PNCCDQ');</script>
+        })(window,document,'script','dataLayer','GTM-PNCCDQ');</script> -->
     <!-- End Google Tag Manager -->
 
     <header id="navbar" role="banner" class="navbar">
