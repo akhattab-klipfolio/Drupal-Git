@@ -42,17 +42,9 @@
         </div>
     <?php endif; ?>
 
-    <div id="top-container" class="container">
-        <?php if (!empty($breadcrumb)): ?>
-            <?php print $breadcrumb; ?>
-        <?php else: ?>
-            <?php print "<ul class='breadcrumb'>"; ?>
-                <li class="active"><?php print $title; ?></li>
-            <?php print "</ul>"; ?>
-        <?php endif; ?>
-    </div>
 
-    <div class="main-container container">
+
+    <div class="main-container">
         <?php if (!empty($site_slogan) || !empty($page['header'])): ?>
             <header role="banner" id="page-header">
                 <?php if (!empty($site_slogan)): ?>
@@ -114,4 +106,3 @@
     <?php endif; ?>
 
 <?php endif; ?>
-
