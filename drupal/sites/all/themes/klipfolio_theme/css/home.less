@@ -178,9 +178,13 @@
     text-transform: uppercase;
     font-weight: bold;
   }
+
+  .black-overlay {
+      background: rgba(0, 0, 0, 0.3);
+  }
   //Banner
   #home-banner {
-    background-image: url(/sites/all/themes/klipfolio_theme/img/homepage-banner.jpg);
+    background-image: url(/sites/all/themes/klipfolio_theme/img/banner/home-banner.jpg);
     width: 100%;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -204,8 +208,11 @@
       background-position: 28% 50%;
     }
     @media @lg {
-      height:100vh;
+      height:750px;
       margin-top: 0px;
+    }
+    @media @retina {
+      height: 100vh;
     }
     .banner-content {
       @media @xs {

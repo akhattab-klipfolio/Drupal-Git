@@ -10,7 +10,7 @@
     <link href="/<?php print path_to_theme() ?>/css/bootstrap.min.css" rel="stylesheet">
     <?php print $styles; ?>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-    
+
     <?php print $scripts; ?>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
