@@ -50,6 +50,10 @@ DirectoryIndex index.php index.html index.htm
     # problems if a non-Drupal PHP file is installed in a subdirectory.
     ExpiresActive Off
   </FilesMatch>
+
+php_value upload_max_filesize 256M
+php_value post_max_size 256M
+
 </IfModule>
 
 # Various rewrite rules.
