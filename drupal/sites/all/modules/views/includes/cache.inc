@@ -23,30 +23,15 @@ function _views_fetch_data($table = NULL, $move = TRUE, $reset = FALSE) {
   if ($table) {
     if (!isset($cache[$table])) {
       $cid = 'views_data:' . $table;
-      if ($data = views_cache_get($cid, TRUE)) {
+      $data = views_cache_get($cid, TRUE);
+      if (!empty($data->data)) {
         $cache[$table] = $data->data;
       }
       else {
         if (!$fully_loaded) {
-          // Try to load the full views cache.
-          if ($data = views_cache_get('views_data', TRUE)) {
-            $cache = $data->data;
-          }
-          else {
-            // No cache entry, rebuild.
-            $cache = _views_fetch_data_build();
-          }
+          // No cache entry, rebuild.
+          $cache = _views_fetch_data_build();
           $fully_loaded = TRUE;
-        }
-
-        // Write back a cache for this table.
-        if (isset($cache[$table])) {
-          views_cache_set($cid, $cache[$table], TRUE);
-        }
-        else {
-          // If there is still no information about that table, it is missing.
-          // Write an empty array to avoid repeated rebuilds.
-          views_cache_set($cid, array(), TRUE);
         }
       }
     }
@@ -67,11 +52,12 @@ function _views_fetch_data($table = NULL, $move = TRUE, $reset = FALSE) {
   }
   else {
     if (!$fully_loaded) {
-      if ($data = views_cache_get('views_data', TRUE)) {
+      $data = views_cache_get('views_data', TRUE);
+      if (!empty($data->data)) {
         $cache = $data->data;
       }
-      else {
-        // No cache entry, rebuild.
+
+      if (empty($cache)) {
         $cache = _views_fetch_data_build();
       }
       $fully_loaded = TRUE;
@@ -96,6 +82,11 @@ function _views_fetch_data_build() {
 
   // Keep a record with all data.
   views_cache_set('views_data', $cache, TRUE);
+  // Save data in seperate cache entries.
+  foreach ($cache as $key => $data) {
+    $cid = 'views_data:' . $key;
+    views_cache_set($cid, $data, TRUE);
+  }
   return $cache;
 }
 
@@ -126,25 +117,12 @@ function _views_data_process_entity_types(&$data) {
 function _views_fetch_plugin_data($type = NULL, $plugin = NULL, $reset = FALSE) {
   static $cache = NULL;
   if (!isset($cache) || $reset) {
-    // Load necessary code once.
-    if (!isset($cache)) {
-      views_include('plugins');
-      views_include_handlers();
-    }
-    // Because plugin data contains translated strings, and as such can be
-    // expensive to build, the results are cached per language.
-    global $language;
-    $cache_key = 'views:plugin_data:' . $language->language;
-    if (!$reset) {
-      if ($cache = cache_get($cache_key)) {
-        $cache = $cache->data;
-      }
-    }
-    // If not available in the cache, build it and cache it.
-    if (!$cache) {
-      $cache = views_discover_plugins();
-      cache_set($cache_key, $cache);
-    }
+    $start = microtime(TRUE);
+    views_include('plugins');
+    views_include_handlers();
+
+    $cache = views_discover_plugins();
+
   }
 
   if (!$type && !$plugin) {

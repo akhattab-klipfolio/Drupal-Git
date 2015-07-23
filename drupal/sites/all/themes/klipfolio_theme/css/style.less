@@ -600,6 +600,428 @@ article {
     }
 }
 /*----------------------------------Pricing Page http://www.klipfolio.com/pricing----------------------------------*/
+article .pricing {
+    /*pricing-table*/
+    .pricing-table-body {
+        background: #f8f8f8;
+        @media @xs {
+            border: 0px solid #dddddd;
+        }
+        @media @sm {
+            border: 1px solid #dddddd;
+        }
+        height: 200px;
+    }
+    .pricing-table-footer {
+        background: #2d2d2d;
+        color: #fff;
+        display: table;
+        height: 100px;
+        width: 100%;
+        overflow: hidden;
+        text-align: center;
+        .innerContainer {
+            display: table-cell;
+            vertical-align: middle;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            span {
+                text-decoration: none;
+                padding: 0px 10px;
+                display: block;
+                font-size: 14px;
+            }
+            h2 {
+                font-size: 30px;
+                text-decoration: none;
+                padding: 0px 10px;
+                margin: 0px;
+                display: block;
+            }
+        }
+    }
+    /*pricing-table - left*/
+
+    .pricing-table-left {
+        margin-bottom: 30px;
+        .pricing-table-header {
+            background: #f05a29;
+            color: #fff;
+            height: 280px;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            .innerContainer {
+                width: 100%;
+                margin: 0 auto;
+                text-align: center;
+                h1 {
+                    font-size: 145px;
+                    letter-spacing: -6px;
+                    font-weight: bold;
+                    text-decoration: none;
+                    margin: 0;
+                    @media @xs {
+                        margin: 10px 0 0 0;
+                    }
+                }
+                h2 {
+                    margin: 0;
+                    margin-bottom: -40px;
+                    margin-top: -5px;
+                    font-size: 36px;
+                    font-weight: bold;
+                }
+                h3 {
+                    font-size: 14px;
+                    text-decoration: none;
+                    font-style: italic;
+                    margin: 0px;
+                    margin-top: -30px;
+                }
+                span {
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    @media @md {
+                        font-size: 14px;
+                    }
+                    @media @lg {
+                        font-size: 16px;
+                    }
+                }
+                .inside {
+                    margin-bottom: 23px;
+                    @media @xs {
+                        margin-bottom: 20px;
+                    }
+                    span {
+                        font-size: 30px;
+                        font-weight: normal;
+                        position: relative;
+                        top: 75px;
+                        left: -90px;
+                    }
+                }
+            }
+        }
+        .pricing-table-body {
+            padding: 20px 40px;
+            text-align: center;
+            display: table;
+            width: 100%;
+            margin: 0 auto;
+            h3 {
+                font-size: 24px;
+                margin: 10px;
+                display: block;
+            }
+            .plan-options {
+                display: table-cell;
+                vertical-align: middle;
+                width: 100%;
+                margin: 0 auto;
+                text-align: center;
+            }
+        }
+    }
+    /*pricing-table - right*/
+
+    .pricing-table-right {
+        margin-bottom: 30px;
+        .pricing-table-header {
+            background: #f05a29;
+            color: #fff;
+            height: 80px;
+            padding: 15px 0;
+            text-align: center;
+            @media @xs {
+                height: auto;
+            }
+            h1 {
+                font-size: 36px;
+                font-weight: bold;
+                margin: 0;
+                margin-bottom: -15px;
+                @media @xs {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+        .pricing-table-body {
+            padding: 0 20px 20px 20px;
+            @media @xs {
+                padding: 0 20px;
+                height: 210px;
+                background: #fff;
+            }
+            .pricing-table-prices {
+                margin: 0 -20px;
+                @media @xs {
+                    height: 195px;
+                    border: 1px solid #ddd;
+                }
+                @media @sm {
+                    height: 106px;
+                    border-bottom: 1px solid #ddd;
+                }
+                @media @md {
+                    height: 102px;
+                    border-bottom: 1px solid #ddd;
+                }
+                @media @lg {
+                    height: 110px;
+                    border-bottom: 1px solid #ddd;
+                }
+                h3 {
+                    margin: 0px;
+                    @media @md {
+                        font-size: 18px;
+                    }
+                    @media @lg {
+                        font-size: 24px;
+                    }
+                }
+                p {
+                    margin: 0px;
+                }
+                .prices-block1, .prices-block2, .prices-block3, .prices-block4, .prices-block5 {
+                    float: left;
+                    width: 20%;
+                    padding: 25px 0;
+                    text-align: center;
+                    position: relative;
+                    z-index: 1;
+                    @media @xs {
+                        width: 33.33333333333333%;
+                    }
+                }
+                .prices-block1 {
+                    @media @xs {
+                        border-left: 0px solid #ddd;
+                    }
+                    @media @sm {
+                        border-left: 0px solid #ddd;
+                    }
+                }
+                .prices-block2 {
+                    @media @xs {
+                        border-left: 1px solid #ddd;
+                        border-right: 1px solid #ddd;
+                    }
+                    @media @sm {
+                        border-left: 1px solid #ddd;
+                        border-right: 1px solid #ddd;
+                    }
+                }
+                .prices-block3 {} .prices-block4 {
+                    @media @xs {
+                        border-left: 0px solid #ddd;
+                    }
+                    @media @sm {
+                        border-left: 1px solid #ddd;
+                        border-right: 1px solid #ddd;
+                    }
+                }
+                .prices-block5 {
+                    @media @xs {
+                        border-right: 0px solid #ddd;
+                        border-left: 1px solid #ddd;
+                    }
+                    @media @sm {
+                        border-right: 0px solid #ddd;
+                        border-left: 0px solid #ddd;
+                    }
+                }
+                .prices-block4, .prices-block5 {
+                    @media @xs {
+                        width: 50%;
+                        border-top: 1px solid #ddd;
+                    }
+                }
+              
+                .white-bg {
+                    background: #f8f8f8;
+                }
+                .orange-bg {
+                    background: #f8f8f8;
+                    : nth-child (2) {
+                        // @media @xs {border-right:0px;}
+                    }
+                }
+            }
+            .pricing-table-slider {
+                @media @xs {
+                    display: none;
+                }
+            }
+            .slider-options-main {
+                margin: 20px 0;
+            }
+            .slider-options-bottom {
+                margin: 10px 0;
+                .prepaid-discount {
+                    float: right;
+                }
+                label {
+                    text-transform: uppercase;
+                    font-size: 16px;
+                }
+                input {
+                    border: 1px solid #C9C9C9;
+                    padding: 0px 5px;
+                }
+                input:hover {
+                    border: 1px solid #f05a29;
+                    padding: 0px 5px;
+                }
+            }
+        }
+        .pricing-table-footer {
+            @media @xs {
+                display: none;
+            }
+        }
+    }
+    .trial-section {
+        background: #f8f8f8;
+        padding: 20px 0;
+        border: 1px solid #dddddd;
+        margin-bottom: 30px;
+        @media @sm {
+            height: 180px;
+        }
+        @media @md {
+            height: 120px;
+        }
+    }
+    .start-trial-text {
+        @media @xs {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        @media @sm {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        @media @md {
+            text-align: left;
+            margin-bottom: 0px;
+        }
+        h3 {
+            margin: 10px 0 0 0;
+            @media @md {
+                margin: 0;
+            }
+            @media @lg {
+                margin: 10px 0 0 0;
+            }
+        }
+    }
+    .start-trial-button {
+        color: #aaa;
+        @media @xs {
+            text-align: center;
+        }
+        @media @sm {
+            margin-top: 0px;
+            text-align: center;
+        }
+        @media @md {
+            margin-top: 0px;
+            text-align: left;
+        }
+    }
+    .trial-link {
+        background: #f05a29;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+        box-shadow: none;
+
+        @media @sm {
+            padding: 10px 30px;
+            font-size: 16px;
+        }
+        @media @md {
+            padding: 20px 30px;
+            font-size: 16px;
+        }
+        @media @lg {
+          font-size: 21px;
+        }
+    }
+    // Add ons
+    .add-ons {
+        margin-bottom: 30px;
+        .add-ons-img {
+            border-bottom: 3px solid #f05a29;
+        }
+        .add-ons-title {
+            background: #2d2d2d;
+            color: #fff;
+            text-align: center;
+            padding: 20px 10px;
+            h2 {
+                margin: 0;
+                font-weight: bold;
+            }
+        }
+        .add-ons-body {
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            color: #2d2d2d;
+            text-align: center;
+            @media @sm {
+                padding: 10px 10px;
+            }
+            @media @md {
+                padding: 10px 3px;
+            }
+            @media @lg {
+                padding: 10px 10px;
+            }
+            h2 {
+                margin: 5px 0;
+                font-weight: bold;
+                @media @sm {
+                    font-size: 18px;
+                }
+                @media @lg {
+                    font-size: 22px;
+                }
+            }
+            p {
+                margin: 0;
+                @media @md {
+                    font-size: 14px;
+                }
+                @media @sm {
+                    font-size: 15px;
+                }
+            }
+        }
+        .add-ons-footer {
+            background: #2d2d2d;
+            color: #eee;
+            text-align: center;
+            padding: 10px;
+            @media @xs {
+                margin-bottom: 20px;
+            }
+            p {
+                margin: 0;
+            }
+        }
+    }
+    .faqs {
+        margin: 0px;
+    }
+    .faqs h4 {
+        margin: 20px 0;
+    }
+}
+/*----------------------------------Resources Page http://www.klipfolio.com/resources----------------------------------*/
 
 article {
     .resources {
