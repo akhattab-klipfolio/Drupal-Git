@@ -51,8 +51,8 @@ DirectoryIndex index.php index.html index.htm
     ExpiresActive Off
   </FilesMatch>
 
-php_value upload_max_filesize 256M
-php_value post_max_size 256M
+php_value upload_max_filesize 512M
+php_value post_max_size 512M
 
 </IfModule>
 
