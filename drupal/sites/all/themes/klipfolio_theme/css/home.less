@@ -1,11 +1,11 @@
 @import "util.less";
 
 // Home page styles
-.page-node-2 {
+.page-node-734 {
   // TRANSPARENT NAV
   #navbar.sticky-nav {
     width: 100%!important;
-    box-sizing: border-box;
+    box-sizing: border-box; 
     @media @xs {
       .navbar-inner {
         background-color: #fff;
@@ -124,7 +124,7 @@
     margin-bottom:0;
     min-height:inherit;
     border:none;
-    box-sizing: border-box;
+    box-sizing: border-box; 
     .container { }
     .logo {
       background-image: url(/sites/all/themes/klipfolio_theme/img/klipfolio-logo.png);
@@ -153,14 +153,14 @@
       -moz-border-radius: 0;
       border-radius: 0;
       perspective: 1800px;
-      box-sizing: border-box;
-       @media @xs {
+      box-sizing: border-box; 
+       @media @xs { 
         background-color: #fff;
       }
-       @media @sm {
+       @media @sm { 
         background-color: #fff;
       }
-      @media @lg {
+      @media @lg { 
         padding:15px 0;
         background-color:transparent;
       }
@@ -174,17 +174,13 @@
     padding-bottom: 50px;
     margin: 0;
     color: #e14d57;
-    text-align: center;
+    text-align: center; 
     text-transform: uppercase;
     font-weight: bold;
   }
-
-  .black-overlay {
-      background: rgba(0, 0, 0, 0.3);
-  }
   //Banner
-  #home-banner {
-    background-image: url(/sites/all/themes/klipfolio_theme/img/banner/home-banner.jpg);
+  #home-banner, .home-banner {
+    background-image: url(/sites/all/themes/klipfolio_theme/img/homepage-banner.jpg);
     width: 100%;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -192,27 +188,36 @@
     position: relative;
     overflow: hidden;
     border-bottom: 10px solid #e14d57;
-    @media @xs {
-      background-image: url(/sites/all/themes/klipfolio_theme/img/home-banner-mobile.jpg);
+    @media @xs { 
+      background-image: url(/sites/all/themes/klipfolio_theme/img/home-banner-mobile.jpg); 
       height: 500px;
-      background-position: 50%;
+      background-position: 50%; 
       margin-top: 0px;
     }
-    @media @sm {
-      height:520px;
+    @media @sm { 
+      height:520px; 
       background-position: 30% 50%;
       margin-top: 70px;
     }
-    @media @md {
-      height:650px;
-      background-position: 28% 50%;
+    @media @md { 
+      height:auto; 
+      background-position: 28% 50%; 
     }
-    @media @lg {
-      height:750px;
-      margin-top: 0px;
+    @media @lg { 
+      height:750px; 
+      margin-top: 0px; 
     }
-    @media @retina {
-      height: 100vh;
+    &.home-hero-1 {
+      background-image: url(http://www.klipfolio.com/sites/all/themes/klipfolio_theme/img/banners/home-hero-6.jpg);
+      background-position: 50% 0%;
+    }
+    &.home-hero-2 {
+      background-image: url(http://www.klipfolio.com/sites/all/themes/klipfolio_theme/img/banners/home-hero-2.jpg);
+      background-position: 50% 0%;
+    }
+    &.home-hero-3 {
+      background-image: url(http://www.klipfolio.com/sites/all/themes/klipfolio_theme/img/banners/home-hero-3.jpg);
+      background-position: 50% 0%;
     }
     .banner-content {
       @media @xs {
@@ -224,7 +229,7 @@
         text-align: left;
       }
       @media @md {
-        margin-top: 380px;
+        margin-top: 280px;
       }
       @media @lg {
         margin-top: 400px;
@@ -235,7 +240,7 @@
       top: 0;
       margin-bottom: 50px;
       @media @xs {
-        text-align: center;
+        text-align: center;  
       }
       @media @sm {
         text-align: left;
@@ -255,7 +260,7 @@
         }
         @media @lg {
           font-size: 42px;
-        }
+        }      
       }
       h2 {
         line-height: 1.4;
@@ -264,15 +269,15 @@
           font-size: 15px;
         }
         @media @sm {
-          width: 550px;
+          width: 550px; 
           font-size: 18px;
         }
         @media @md {
-          width: 700px;
+          width: 700px; 
           font-size: 21px;
         }
         @media @lg {
-          width: 750px;
+          width: 750px; 
           font-size: 24px;
         }
       }
@@ -282,33 +287,36 @@
         font-weight: bold;
         border-radius: 5px;
         @media @xs {
-          background-color: transparent;
+          background-color: transparent;  
           padding: 0;
         }
         a {
           color: #fff;
         }
         a:hover {
-          text-decoration: none;
+          text-decoration: none; 
         }
       }
     }
     .cta-block {
       button {
         width: auto;
-        font-size: 16px;
-        padding: 10px 30px;
         margin-right: 15px;
         display: inline-block;
-        @media @lg {
-          font-size: 24px;
-          padding: 15px 30px;
+        font-size: 24px;
+        padding: 15px 30px;
+        @media @xs {
+          padding: 10px 20px;
+          display: block;
+          font-size: 18px;
+          margin: auto;
         }
       }
       button.btn-demo-video, button.btn-explainer-video {
         position: relative;
-        padding-left: 60px;
-        padding-right: 25px;
+        display: inline-block;
+        height: 57px;
+        padding: 0 25px 0 60px;
         display: none;
         border: 2px solid #FFF;
         background-color: rgba(0, 0, 0, 0);
@@ -323,10 +331,10 @@
           content: " ";
           left: 20px;
           @media @md {
-            top: 7px;
+            top: 12px;
           }
           @media @lg {
-            top: 14px;
+            top: 12px;
           }
         }
         &:hover {
@@ -338,8 +346,8 @@
       }
       button.btn-request-demo {
         position: relative;
-        padding-left: 60px;
-        padding-right: 25px;
+        height: 57px;
+        padding: 0 25px 0 60px;
         display: none;
         border: 2px solid #FFF;
         background-color: rgba(0, 0, 0, 0);
@@ -354,10 +362,10 @@
           content: " ";
           left: 20px;
           @media @md {
-            top: 7px;
+            top: 12px;
           }
           @media @lg {
-            top: 14px;
+            top: 12px;
           }
         }
         &:hover {
@@ -367,9 +375,26 @@
           display: inline-block;
         }
       }
+
+      button.btn-request-demo2, button.btn-explainer-video2 {
+        width: auto;
+        margin-right: 15px;
+        display: inline-block;
+        font-size: 24px;
+        padding: 15px 30px;
+        background-color: #fff;
+        color: @red;
+        &:hover {
+          background-color: #eee;
+        }
+        @media @md {
+          display: inline-block;
+        }
+      }
+      
     }
   }
-  // Qoutes - Top
+  // Qoutes - Top 
   #home-top-qoutes {
     text-align: center;
     .customer-heart {
@@ -413,7 +438,7 @@
       text-align: left;
       padding: 10px;
       @media @sm {
-        text-align: center;
+        text-align: center; 
       }
       @media @md {
         text-align: left;
@@ -425,7 +450,7 @@
       background: #404040;
       margin: 20px 10px;
       @media @sm {
-        margin: 20px auto;
+        margin: 20px auto; 
       }
       @media @md {
         margin: 20px 10px;
@@ -435,7 +460,7 @@
       text-align: left;
       padding: 10px 10px 0;
       @media @sm {
-        text-align: center;
+        text-align: center; 
       }
       @media @md {
         text-align: left;
@@ -489,7 +514,7 @@
       background-image: url(/sites/all/themes/klipfolio_theme/img/klipfolio-for-you.png);
       background-size: 90%;
       background-position: 50%;
-      background-repeat: no-repeat;
+      background-repeat: no-repeat; 
       border-radius: 50%;
       position: absolute;
       z-index: 40;
@@ -871,7 +896,7 @@
     .home-bottom-quotes {
       text-align: center;
       .row .col-md-9 {
-        margin-bottom: 30px;
+        margin-bottom: 30px; 
         @media @lg {
           border-left: 1px solid #ccc;
         }
@@ -900,7 +925,7 @@
           }
           @media @md {
             margin: 20px;
-            width: 85px;
+            width: 85px; 
             height: auto;
           }
         }
@@ -912,7 +937,7 @@
           text-align: center;
         }
         @media @sm {
-          text-align: center;
+          text-align: center; 
         }
         @media @md {
           text-align: left;
@@ -961,7 +986,7 @@
     width: 100%;
     padding: 50px 0;
     color: #fff;
-    text-align: center;
+    text-align: center; 
     h2 {
       margin: 0 30px 0 0;
       display: inline-block;
@@ -972,7 +997,7 @@
       background-color: #333333;
       background-image: url("/sites/all/themes/klipfolio_theme/img/data-viz-icons-bg.png");
       color: #fff;
-      text-align: center;
+      text-align: center; 
       h2 {
           font-weight: bold;
           text-transform: uppercase;
@@ -985,7 +1010,7 @@
         background-color: #e14d57;
         border-radius: 5px;
         &:hover {
-          background-color: #b93c45;
+          background-color: #b93c45; 
         }
       }
   }

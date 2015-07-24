@@ -18,17 +18,11 @@
 			var win = $(window);
 
 			var allMods = $(".triangle");
-			var allMods23 = $(".triangle2");
-			var allMods2 = $(".graph-transition");
-			var allMods3 = $(".scale-up");
-			var allMods4 = $(".overview-header");
+			var allMods3 = $(".graph-transition");
+			var allMods4 = $(".scale-up");
+			var allMods5 = $(".object-hidden");
 
-			// allMods.each(function(i, el) {
-			// 	var el = $(el);
-			// 	if (el.scrollvisible(true)) {
-			// 		el.addClass("already-visible"); 
-			// 	} 
-			// });
+			
 
 			win.scroll(function(event) {
 			  
@@ -43,38 +37,29 @@
 			    }
 			  });
 
-			  allMods23.each(function(i, el) {
-			    var el = $(el);
-			    if (el.scrollvisible(true)) {
-			      el.addClass("up");
-			    } 
-			    else {
-			      el.addClass("down");
-			      el.removeClass("up");
-			    }
-			  });
 
-
-			  allMods2.each(function(i, el) {
+			  allMods3.each(function(i, el) {
 			    var el = $(el);
 			    if (el.scrollvisible(true)) {
 			      el.addClass("line-full"); 
 			    } 
 			  });
 
-			  allMods3.each(function(i, el) {
+			  allMods4.each(function(i, el) {
 			    var el = $(el);
 			    if (el.scrollvisible(true)) {
 			      el.addClass("scaling"); 
 			    } 
 			  });
 
-			  allMods4.each(function(i, el) {
+			  allMods5.each(function(i, el) {
 			    var el = $(el);
 			    if (el.scrollvisible(true)) {
-			      el.addClass("bg-bigger"); 
+			      el.addClass("object-appeared"); 
 			    } 
 			  });
+
+			  
 
 			
 
@@ -91,30 +76,7 @@
 			    }
 			});
 
-			$("li").tooltip();
-
-			var $w = $(window);
-			var $prog2 = $('.progress-indicator');
-			var wh, h, sHeight;
-			function setSizes(){
-				wh = $w.height();
-				h = $('body').height();
-				sHeight = h - wh;
-			}
-
-			setSizes();
-
-			$w.on('scroll', function(){
-				var perc = Math.max(0, Math.min(1, $w.scrollTop()/sHeight));
-				updateProgress(perc);
-			}).on('resize', function(){
-				setSizes();
-				$w.trigger('scroll');
-			});
-
-			function updateProgress(perc){
-				$prog2.css({height : perc*100 + '%'});
-			}
+			
 
 		}
 	};

@@ -1,19 +1,17 @@
 (function ($) {
-    Drupal.behaviors.GAKlipStartPopUp = {
+    Drupal.behaviors.KlipfolioSupport = {
         attach: function() {
 
-            //hide-popup in the beginning
-            $('.popup-container').hide();
 
             //set up the cookie so popup appear only once
+            //after being dismissed it appears after 3 days
             //set time for popup to appear after 4s
             setTimeout(function() {
-                if (!$.cookie('marketingTrialPopups')){
+                if (!$.cookie('KlipfolioSupportPopup')){
                     $('.popup-container').fadeIn();
                     $('body').css("overflow","hidden");
-                    
                 }
-                $.cookie('marketingTrialPopups', 'true', { expires: 3, path: '/' });
+                $.cookie('KlipfolioSupportPopup', 'true', { expires: 30, path: '/' });
             }, 4000);
 
             //make close buttong and white space clickable in order to hide the popup 

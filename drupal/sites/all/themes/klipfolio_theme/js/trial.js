@@ -2,7 +2,7 @@
     Drupal.behaviors.klipfolioTrial = {
         attach: function() {
             var $logo = $("<div class='full-logo'>");
-            var $content = $("<div>").append($("<iframe id='trial-form' src='https://info.klipfolio.com/web-sign-up-1.html' scrolling='no' seamless='seamless' style='border:0; width: 100%; height: 270px;'></iframe>"));
+            var $content = $("<div>").append($("<iframe id='trial-form' src='https://info.klipfolio.com/web-sign-up-1.html' scrolling='no' seamless='seamless' style='border:0; width: 100%; height: 295px;'></iframe>"));
 
 
             function receiveMessage(event)

@@ -1,17 +1,19 @@
+<!-- If it's the homepage -->
 <?php if ($current_page == "home"): ?>
 
     <?php print render($page['content']); ?>
 
+<!-- If it's a landing page -->
 <?php elseif ($node_type == "landing_page"): ?>
 
-    <?php if (!empty($page['banner'])): ?>
-        <div id="top-banner">
-            <?php print render($page['banner']); ?>
-        </div>
-    <?php endif; ?>
 
     <?php print render($page['content']); ?>
 
+    <?php if (!empty($page['below_content'])): ?>
+        <?php print render($page['below_content']); ?>
+    <?php endif; ?>
+
+<!-- If neither home or lp .. then show this -->
 <?php else: ?>
 
     <?php if (!empty($secondary_menu)): ?>
@@ -42,9 +44,17 @@
         </div>
     <?php endif; ?>
 
+    <div id="top-container" class="container">
+        <?php if (!empty($breadcrumb)): ?>
+            <?php print $breadcrumb; ?>
+        <?php else: ?>
+            <?php print "<ul class='breadcrumb'>"; ?>
+                <li class="active"><?php print $title; ?></li>
+            <?php print "</ul>"; ?>
+        <?php endif; ?>
+    </div>
 
-
-    <div class="main-container">
+    <div class="main-container container">
         <?php if (!empty($site_slogan) || !empty($page['header'])): ?>
             <header role="banner" id="page-header">
                 <?php if (!empty($site_slogan)): ?>
@@ -106,3 +116,4 @@
     <?php endif; ?>
 
 <?php endif; ?>
+

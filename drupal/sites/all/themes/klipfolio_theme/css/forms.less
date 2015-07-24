@@ -205,17 +205,20 @@ button {
 }
 .blog-social-links {
     position: fixed;
-    width: 100px;
-    left: 5%;
+    left: -5px;
     top: 170px;
-    background: #fff;
-    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 10px 10px 10px 20px;
     border-radius: 5px;
-    border: 1px solid #ccc;
-    text-align: center;
+    text-align: left;
+    -webkit-box-shadow: 1px 0px 5px 1px rgba(68, 68, 68, 0.3);
+    box-shadow: 1px 0px 5px 1px rgba(68, 68, 68, 0.3);
     .social-button {
         display: block;
         margin: 5px auto 0;
+        padding: 5px 10px 5px 5px;
+        width: auto;
+        border: 1px solid #DDD;
     }
 }
 .cancel-action {
@@ -229,9 +232,47 @@ button {
 //main trial form on website
 iframe#trial-form {
     width: 100% !important;
+    height: 295px;
     @media @xs {
-        width: 195px !important;
-        height: 415px !important;
+        height: 360px !important;
+    }
+}
+body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
+  margin-right: 0;
+}
+
+.modal#TrialForm {
+    .modal-dialog {
+        width: auto;
+        @media @sm {
+            width: 515px;
+        }
+        @media @md {
+            width: 515px;
+        }
+    }
+    .modal-header {
+        background-color: #f2f2f2;
+        border-radius: 5px 5px 0 0;
+    }
+    .modal-body {
+      position: relative;
+      padding: 30px;
+    }
+    &.fade .modal-dialog {
+      -webkit-transform: translate(0,-25%) scale3d(0,0,0);
+      -ms-transform: translate(0,-25%) scale3d(0,0,0);
+      transform: translate(0,-25%) scale3d(0,0,0);
+      -webkit-transition: -webkit-transform .3s ease-out;
+      -moz-transition: -moz-transform .3s ease-out;
+      -o-transition: -o-transform .3s ease-out;
+      transition: transform .3s ease-out;
+    }
+
+    &.in .modal-dialog {
+      -webkit-transform: translate(0,0) scale3d(1,1,1);
+      -ms-transform: translate(0,0) scale3d(1,1,1);
+      transform: translate(0,0) scale3d(1,1,1);
     }
 }
 
@@ -366,6 +407,13 @@ iframe#journey-guide-form {
     @media @lg {
         height: 550px;
     }
+}
+
+// professional services page form
+iframe#ebook-form {
+    width: 100%;
+    border: 0;
+    height: 360px;
 }
 
 .subscription-preference-Form {

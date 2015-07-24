@@ -40,7 +40,7 @@ var slider = false;
 
 (function ($) {
     Drupal.behaviors.klipfolioJS = {
- 	    attach: function() {
+        attach: function() {
             $("#navbar").scrollToFixed({
                 zIndex:100
             });

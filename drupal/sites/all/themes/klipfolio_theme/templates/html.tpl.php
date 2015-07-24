@@ -9,8 +9,8 @@
 
     <link href="/<?php print path_to_theme() ?>/css/bootstrap.min.css" rel="stylesheet">
     <?php print $styles; ?>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700,300,600,400' rel='stylesheet' type='text/css'>
+    <script src="//cdn.optimizely.com/js/739880420.js"></script>
     <?php print $scripts; ?>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -24,13 +24,13 @@
       data-offset="<?php if (drupal_lookup_path("alias", current_path()) == "features") { print 140; } else { print 70; } ?>">
 
     <!-- Google Tag Manager -->
-        <!-- <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PNCCDQ"
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PNCCDQ"
         height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-PNCCDQ');</script> -->
+        })(window,document,'script','dataLayer','GTM-PNCCDQ');</script>
     <!-- End Google Tag Manager -->
 
     <header id="navbar" role="banner" class="navbar">
@@ -45,7 +45,7 @@
                 <div class="pull-right hidden-xs">
                     <ul class="nav navbar-nav uppercase" style="margin-right:0;">
                         <li><a href="http://app.klipfolio.com/" target="_blank" class="sign-in-link">Sign in</a></li>
-                        <li class="hidden-sm"><a href="#" class="visible-desktop trial-link trial-header open-trial-dialog">Try it now</a></li>
+                        <li class="hidden-sm"><a href="#" class="visible-desktop trial-link trial-header open-trial-modal" data-toggle="modal" data-target="#TrialForm">Try it now</a></li>
                     </ul>
                 </div>
 
@@ -131,7 +131,7 @@
                     <?php endforeach; ?>
                     <div class="col-sm-3 col-lg-2">
                         <div id="third-parties">
-                            <div class="trial-link uppercase strong trial-footer open-trial-dialog">Free Trial</div>
+                            <div class="trial-link uppercase strong trial-footer open-trial-modal" data-toggle="modal" data-target="#TrialForm">Free Trial</div>
                             <small>Hosted on:</small><span class="rackspace"></span>
                             <small>Trusted by:</small><span class="verisign"></span>
                         </div>

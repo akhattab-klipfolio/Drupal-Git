@@ -19,10 +19,13 @@ regions[footer]         = 'Footer'
 stylesheets[all][] = js/magnific-popup/magnific-popup.css
 stylesheets[all][] = css/home.less
 stylesheets[all][] = css/style.less
-stylesheets[all][] = css/layout.less
+stylesheets[all][] = css/util.less
 stylesheets[all][] = css/forms.less
-stylesheets[all][] = css/landing-pages.less
+stylesheets[all][] = css/layout.less
+stylesheets[all][] = css/blog.less
 stylesheets[all][] = css/animation.less
+stylesheets[all][] = css/landing-pages.less
+
 
 ; Scripts
 scripts[] = 'js/magnific-popup/jquery.magnific-popup.min.js'
